@@ -1,0 +1,10 @@
+/* Import alle stylesheets */
+@import url(/Applications/MAMP/htdocs/stageverslag/css/animate.css);
+/* Variabelen */
+/* Functies (Auto Text Contrast) */
+/* Algemeen */
+header {
+  background: #222;
+  color: #fff;
+  height: 100vh;
+}

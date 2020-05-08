@@ -1,0 +1,31 @@
+/* Import alle stylesheets */
+
+@import "../css/breakpoints";
+@import "../css/functions";
+@import "../css/variables";
+@import "../css/animate.css";
+
+/* Variabelen */
+
+$text-dark: #222;
+$text-light: #fff;
+
+
+/* Functies (Auto Text Contrast) */
+@function text-contrast($color) {
+    @if (lightness($color) > 40) {
+        @return $text-dark;
+    }
+    @else {
+        @return $text-light;
+    }
+}
+
+/* Algemeen */
+
+header {
+    $bg: #222;
+    background: $bg;
+    color: text-contrast($bg);
+    height: 100vh;
+}
