@@ -3,13 +3,19 @@
 @import "../css/breakpoints";
 @import "../css/functions";
 @import "../css/variables";
-@import "../css/animate.css";
+
+/* webfonts */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Roboto:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap');
 
 /* Variabelen */
+$text-mono: 'DM Mono', monospace;
+$text-roboto: 'Roboto', sans-serif;
 
 $text-dark: #222;
 $text-light: #fff;
 
+$accent-color: #a4181b;
 
 /* Functies (Auto Text Contrast) */
 @function text-contrast($color) {
@@ -21,11 +27,136 @@ $text-light: #fff;
     }
 }
 
-/* Algemeen */
+@function rem-calc($size) {
+    $remSize: $size / 16px;
+    @return #{$remSize}rem;
+}
+
+/* base values */
+
+a {
+    transition: color .5s ease;
+    transform: 0;
+    &:hover {
+        color: $accent-color !important;
+        text-decoration: none;
+    }
+}
+
+ul {
+    list-style: none;
+}
+
+p {
+    font-size: rem-calc(18px);
+}
+
+body { 
+    background: #223;
+}
+
+h1 {
+    text-transform: uppercase;
+    display: block;
+}
 
 header {
-    $bg: #222;
-    background: $bg;
-    color: text-contrast($bg);
+    max-height: 50vh;
+    height: 300px;
+}
+
+/* particles */
+#particles-js {
+    position: fixed;
+    z-index: -1;
     height: 100vh;
+    width: 100vw;
+}
+/* progress bar */
+#progresscontainer {
+    position: fixed;
+    width: 10px;
+    left: 0;
+    height: 100vh;
+    background: none;
+}
+#progressbar {
+    background-color: $accent-color;
+    height: 0;
+    transition: all .5s ease;
+}
+/* classes */
+
+.offsetL {
+    @include media-breakpoint-up(md) {
+        margin-left: -20px;
+        margin-top: -20px;
+    }
+}
+.quote {
+    font-family: $text-mono;
+    font-size: rem-calc(24px);
+    text-align: center;
+    p {
+        &:before {
+            content: '"';
+        }
+        &::after {
+            content: '"';
+        }
+    }
+}
+.quoteR {
+    @extend .quote;
+    display: block;
+    float: right;
+    @include media-breakpoint-up(md) {
+        margin-right: -80px;
+    }
+}
+
+/* Backgrounds */
+.bg-black {
+    $clr: #222;
+    background: $clr;
+    color: text-contrast($clr);
+    a {
+        color: text-contrast($clr);
+    }
+}
+.bg-white {
+    $clr: #fff;
+    background: $clr;
+    color: text-contrast($clr);
+    a {
+        color: text-contrast($clr);
+    }
+}
+.bg-red {
+    $clr: #a4181b;
+    background: $clr;
+    color: text-contrast($clr);
+    a {
+        color: text-contrast($clr);
+    }
+}
+
+.titlecard {
+    padding: 10px 0;
+}
+
+.chapterImg {
+    max-height: 250px;
+    object-fit: cover;
+    object-position: center 70%;
+}
+
+.maxheight {
+    @include media-breakpoint-down(md){
+        max-height: 200px;
+    }
+    @include media-breakpoint-up(sm){
+        max-height: 250px;
+    }
+    object-fit: cover;
 }
